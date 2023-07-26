@@ -9,20 +9,26 @@
 <body>
    
     <div style="border-radius: 20px; height:auto;width:500px;" class="a">
-    <h1 style="color:brown"><%= listitems %></h1>
+    <h1 style="color:brown"><%= listItems %></h1>
     </div>
-    <div class="b">
+    
         
+   
+   <% for(var i=0;i<newitem.length; i++) {%>
+    <form action="/delete" method="post">
+        <div class="b">
+        <li><%= newitem[i].name %><input type="checkbox" name="checkbox" value="<%= newitem[i]._id %>" onchange="this.form.submit()" ></li>
+    </div>
+    <input type="hidden" name="listname" value="<%= listItems %>"></input>
+</form><%
+   }%>
+
     
        
-       <% for(var i=0;i<newitem.length;i++){%>
-        <li><%= newitem[i] %><input type="checkbox"> </li> <%
-       }%>
     
-    </div>
     <form action="/" method="post">
         <input type="text" name="nameitem" class="d">
-        <button type="submit" name="list" value="work">+</button>
+        <button type="submit" name="list" value="<%= listItems %>" >+</button>
     </form>
     
     
